@@ -1,0 +1,12 @@
+*.mat
+*.h5
+*.pyc
+*-checkpoint.ipynb
+*~
+*.swp
+datasets/ReferIt/*
+data/finetune/*
+data/metadata/*
+
+*.caffemodel
+*.tfmodel
