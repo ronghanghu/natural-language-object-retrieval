@@ -1,0 +1,17 @@
+net: "./prototxt/scrc_no_context_vgg_buffer_50.prototxt"
+
+train_state: { stage: 'freeze-convnet' stage: 'factored' stage: '2-layer' }
+base_lr: 0.001
+lr_policy: "step"
+gamma: 0.5
+stepsize: 30000
+display: 1
+max_iter: 90000
+momentum: 0.9
+weight_decay: 0.0000
+snapshot: 10000
+snapshot_prefix: "./exp-referit/caffemodel/scrc_no_context_vgg"
+solver_mode: GPU
+random_seed: 1701
+average_loss: 100
+clip_gradients: 10

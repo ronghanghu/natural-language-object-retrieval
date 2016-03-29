@@ -5,8 +5,8 @@
 *~
 *.swp
 datasets/ReferIt/*
-data/finetune/*
-data/metadata/*
+data/*
+external/*
 
 *.caffemodel
-*.tfmodel
+*.solverstate
