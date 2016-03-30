@@ -12,7 +12,7 @@ License: BSD 2-Clause license
 3. Build the SCRC Caffe version in `external/caffe-natural-language-object-retrieval`, following the [Caffe installation instruction](http://caffe.berkeleyvision.org/installation.html). **Remember to also build pycaffe.**
 
 ## SCRC demo
-1. Download the pretrained models with `./data/download_edgebox_proposals.sh`.  
+1. Download the pretrained models with `./models/download_trained_models.sh`.  
 2. Run the SCRC demo in `./demo/retrieval_demo.ipynb` with [Jupyter Notebook (IPython Notebook)](http://ipython.org/notebook.html).
 
 ![Image](http://www.eecs.berkeley.edu/~ronghang/projects/cvpr16_text_obj_retrieval/scrc_demo.jpg)
