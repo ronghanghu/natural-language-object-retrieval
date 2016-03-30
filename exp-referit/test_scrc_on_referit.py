@@ -128,10 +128,11 @@ for n_im in range(num_im):
             topK_ids = np.argsort(-scores)[:K]
             topK_IoUs = IoUs[topK_ids]
             # whether the K-th (ranking from high to low) candidate is correct
-            topK_is_correct = (topK_IoUs >= correct_IoU_threshold)
+            topK_is_correct = np.zeros(K, dtype=bool)
+            topK_is_correct[:len(topK_ids)] = (topK_IoUs >= correct_IoU_threshold)
             # whether at least one of the top K candidates is correct
             topK_any_correct = (np.cumsum(topK_is_correct) > 0)
-            topK_correct_num[:len(topK_any_correct)] += topK_any_correct
+            topK_correct_num += topK_any_correct
             total_num += 1
 
     # print intermediate results during testing
