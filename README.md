@@ -18,7 +18,7 @@ License: BSD 2-Clause license
 ![Image](http://www.eecs.berkeley.edu/~ronghang/projects/cvpr16_text_obj_retrieval/scrc_demo.jpg)
 
 ## Train and evaluate SCRC model on ReferIt Dataset
-1. Download the ReferIt dataset: `/datasets/download_referit_dataset.sh`.
+1. Download the ReferIt dataset: `./datasets/download_referit_dataset.sh`.
 2. Download pre-extracted EdgeBox proposals: `./data/download_edgebox_proposals.sh`.
 3. Preprocess the ReferIt dataset to generate metadata needed for training and evaluation: `python ./exp-referit/preprocess_dataset.py`.
 4. Cache the scene-level contextual features to disk: `python ./exp-referit/cache_referit_context_features.py`.
