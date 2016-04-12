@@ -6,6 +6,8 @@ import numpy as np
 import util
 import retriever
 
+trn_imlist_file = './data/split/referit_trainval_imlist.txt'
+
 image_dir = './datasets/ReferIt/ImageCLEF/images/'
 resized_imcrop_dir = './data/resized_imcrop/'
 cached_context_features_dir = './data/referit_context_features/'
@@ -23,8 +25,9 @@ save_imcrop_list_file = './data/training/train_bbox_context_imcrop_list.txt'
 save_wholeim_list_file = './data/training/train_bbox_context_wholeim_list.txt'
 save_hdf5_text_list_file = './data/training/train_bbox_context_hdf5_text_list.txt'
 save_hdf5_bbox_list_file = './data/training/train_bbox_context_hdf5_bbox_list.txt'
-save_hd5_dir = './data/training/hdf5_50_bbox_context/'
+save_hdf5_dir = './data/training/hdf5_50_bbox_context/'
 
+imset = set(util.io.load_str_list(trn_imlist_file))
 vocab_dict = retriever.build_vocab_dict_from_file(vocab_file)
 query_dict = util.io.load_json(query_file)
 imsize_dict = util.io.load_json(imsize_dict_file)
@@ -33,6 +36,8 @@ imcrop_bbox_dict = util.io.load_json(imcrop_bbox_dict_file)
 train_pairs = []
 for imcrop_name, des in query_dict.iteritems():
     imname = imcrop_name.split('_', 1)[0]
+    if imname not in imset:
+        continue
     imsize = np.array(imsize_dict[imname])
     bbox = np.array(imcrop_bbox_dict[imcrop_name])
     bbox_feat = retriever.compute_spatial_feat(bbox, imsize)
@@ -55,8 +60,8 @@ hdf5_text_list = []
 hdf5_bbox_list = []
 
 # generate hdf5 files
-if not os.path.isdir(save_hd5_dir):
-    os.mkdir(save_hd5_dir)
+if not os.path.isdir(save_hdf5_dir):
+    os.mkdir(save_hdf5_dir)
 for n_batch in range(num_batch):
     if (n_batch+1) % 100 == 0:
         print('writing batch %d / %d' % (n_batch+1, num_batch))
@@ -84,8 +89,8 @@ for n_batch in range(num_batch):
         target_sentences[:, n_pair-begin] = stream + [0] + [-1] * pad
         bbox_coordinates[n_pair-begin, :] = np.squeeze(train_pairs[n_pair][2])
         fc7_context[n_pair-begin, :] = train_pairs[n_pair][4]
-    h5_text_filename = save_hd5_dir + 'text_%d_to_%d.h5' % (begin, end)
-    h5_bbox_filename = save_hd5_dir + 'bbox_context_%d_to_%d.h5' % (begin, end)
+    h5_text_filename = save_hdf5_dir + 'text_%d_to_%d.h5' % (begin, end)
+    h5_bbox_filename = save_hdf5_dir + 'bbox_context_%d_to_%d.h5' % (begin, end)
     retriever.write_batch_to_hdf5(h5_text_filename, cont_sentences,
                                   input_sentences, target_sentences)
     retriever.write_bbox_context_to_hdf5(h5_bbox_filename, bbox_coordinates,
