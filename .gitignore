@@ -4,7 +4,13 @@
 *-checkpoint.ipynb
 *~
 *.swp
+
+*.zip
+*.tar.gz
+
 datasets/ReferIt/*
+datasets/Kitchen/*
+
 data/*
 external/*
 

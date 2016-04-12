@@ -2,6 +2,14 @@
 This repository contains the code for the following paper:
 
 * R. Hu, H. Xu, M. Rohrbach, J. Feng, K. Saenko, T. Darrell, *Natural Language Object Retrieval*, in Computer Vision and Pattern Recognition (CVPR), 2016 ([PDF](http://arxiv.org/pdf/1511.04164))
+```
+@article{hu2015natural,
+  title={Natural Language Object Retrieval},
+  author={Hu, Ronghang and Xu, Huazhe and Rohrbach, Marcus and Feng, Jiashi and Saenko, Kate and Darrell, Trevor},
+  journal={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  year={2016}
+}
+```
 
 Project Page: http://ronghanghu.com/text_obj_retrieval  
 License: BSD 2-Clause license
@@ -27,3 +35,9 @@ License: BSD 2-Clause license
 7. Evaluate the trained model: `python ./exp-referit/test_scrc_on_referit.py`.
 
 Optionally, you may also train a SCRC version without contextual feature, using `python ./exp-referit/initialize_weights_scrc_no_context.py && ./exp-referit/train_scrc_no_context_on_referit.sh`.
+
+## Train and evaluate SCRC model on Kitchen Dataset
+1. Download the Kitchen dataset: `./datasets/download_kitchen_dataset.sh`.
+2. Build training image lists and HDF5 batches: `python exp-kitchen/cache_kitchen_training_batches.py`.
+3. Train with SGD: `./exp-kitchen/train_scrc_kitchen.sh`.
+4. Evaluate the trained model: `python exp-kitchen/test_scrc_on_kitchen.py`.
