@@ -12,7 +12,6 @@ This repository contains the code for the following paper:
 ```
 
 Project Page: http://ronghanghu.com/text_obj_retrieval  
-License: BSD 2-Clause license
 
 ## Installation
 1. Download this repository or clone with Git, and then `cd` into the root directory of the repository.
