@@ -27,16 +27,18 @@ Project Page: http://ronghanghu.com/text_obj_retrieval
 ## Train and evaluate SCRC model on ReferIt Dataset
 1. Download the ReferIt dataset: `./datasets/download_referit_dataset.sh`.
 2. Download pre-extracted EdgeBox proposals: `./data/download_edgebox_proposals.sh`.
-3. Preprocess the ReferIt dataset to generate metadata needed for training and evaluation: `python ./exp-referit/preprocess_dataset.py`.
-4. Cache the scene-level contextual features to disk: `python ./exp-referit/cache_referit_context_features.py`.
-5. Build training image lists and HDF5 batches: `python ./exp-referit/cache_referit_training_batches.py`.
-6. Initialize the model parameters and train with SGD: `python ./exp-referit/initialize_weights_scrc_full.py && ./exp-referit/train_scrc_full_on_referit.sh`.
-7. Evaluate the trained model: `python ./exp-referit/test_scrc_on_referit.py`.
+3. You may need to add the SRCR root directory to Python's module path: `export PYTHONPATH=.:$PYTHONPATH`.
+4. Preprocess the ReferIt dataset to generate metadata needed for training and evaluation: `python ./exp-referit/preprocess_dataset.py`.
+5. Cache the scene-level contextual features to disk: `python ./exp-referit/cache_referit_context_features.py`.
+6. Build training image lists and HDF5 batches: `python ./exp-referit/cache_referit_training_batches.py`.
+7. Initialize the model parameters and train with SGD: `python ./exp-referit/initialize_weights_scrc_full.py && ./exp-referit/train_scrc_full_on_referit.sh`.
+8. Evaluate the trained model: `python ./exp-referit/test_scrc_on_referit.py`.
 
 Optionally, you may also train a SCRC version without contextual feature, using `python ./exp-referit/initialize_weights_scrc_no_context.py && ./exp-referit/train_scrc_no_context_on_referit.sh`.
 
 ## Train and evaluate SCRC model on Kitchen Dataset
 1. Download the Kitchen dataset: `./datasets/download_kitchen_dataset.sh`.
-2. Build training image lists and HDF5 batches: `python exp-kitchen/cache_kitchen_training_batches.py`.
-3. Train with SGD: `./exp-kitchen/train_scrc_kitchen.sh`.
-4. Evaluate the trained model: `python exp-kitchen/test_scrc_on_kitchen.py`.
+2. You may need to add the SRCR root directory to Python's module path: `export PYTHONPATH=.:$PYTHONPATH`.
+3. Build training image lists and HDF5 batches: `python exp-kitchen/cache_kitchen_training_batches.py`.
+4. Train with SGD: `./exp-kitchen/train_scrc_kitchen.sh`.
+5. Evaluate the trained model: `python exp-kitchen/test_scrc_on_kitchen.py`.
