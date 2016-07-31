@@ -3,7 +3,7 @@ This repository contains the code for the following paper:
 
 * R. Hu, H. Xu, M. Rohrbach, J. Feng, K. Saenko, T. Darrell, *Natural Language Object Retrieval*, in Computer Vision and Pattern Recognition (CVPR), 2016 ([PDF](http://arxiv.org/pdf/1511.04164))
 ```
-@article{hu2015natural,
+@article{hu2016natural,
   title={Natural Language Object Retrieval},
   author={Hu, Ronghang and Xu, Huazhe and Rohrbach, Marcus and Feng, Jiashi and Saenko, Kate and Darrell, Trevor},
   journal={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
